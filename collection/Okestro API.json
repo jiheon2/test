@@ -1,0 +1,5188 @@
+{
+	"info": {
+		"_postman_id": "df0145ba-c22b-44db-9c09-c9d58c1a2110",
+		"name": "Okestro API",
+		"description": "Okestro API 테스트",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "28425721-df0145ba-c22b-44db-9c09-c9d58c1a2110"
+	},
+	"item": [
+		{
+			"name": "api/v1",
+			"item": [
+				{
+					"name": "user",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "오케스트로 사원 조회",
+									"id": "70002ca7-c5c9-44d8-988b-28c212a3717e",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/user/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"user",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) 조회할 사원의 ID"
+												}
+											]
+										},
+										"description": "ID를 기준으로 사원을 조회합니다."
+									},
+									"response": [
+										{
+											"id": "5b0ef240-25e6-4833-a7d0-e07fbe474ffe",
+											"name": "조회 성공",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 조회할 사원의 ID"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*",
+													"uuid": "d59edc5f-bf1d-4f7a-9568-b96020676858"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": 1,\n  \"name\": \"김지헌\",\n  \"dept\": \"공공클라우드네이티브실\",\n  \"team\": \"이행관리팀\"\n}"
+										},
+										{
+											"id": "fa2456b7-2d24-4e2a-8fcf-7ae849c56daa",
+											"name": "잘못된 요청",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 조회할 사원의 ID"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "e2bd188e-8de2-4024-823b-c48505be45eb"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "8a498b2f-1873-4e9b-a7de-05bc61cc40ad",
+											"name": "권한 없음",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 조회할 사원의 ID"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "d52b70a7-9c23-40f1-b22e-8d1fd55ee892"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "e6dafefd-78c6-482b-a270-fefd5c6507ac",
+											"name": "접근 금지",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 조회할 사원의 ID"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "c6302709-430b-4a1b-99c8-5436b8f1ef4b"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "ce8c8b80-6022-49ef-9a18-5d166b9b56a3",
+											"name": "리소스를 찾을 수 없음",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 조회할 사원의 ID"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "97c3b8d8-0f7f-48d6-a8aa-3dc1fca19f53"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "ff64667b-075c-4d0c-8205-030bb7c1f440",
+											"name": "지원하지 않는 메서드",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 조회할 사원의 ID"
+														}
+													]
+												}
+											},
+											"status": "Method Not Allowed",
+											"code": 405,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "0ed9e0a5-0c97-4555-a806-33e69e26ecba"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "38122917-6bea-4c38-aa73-a446a7a00429",
+											"name": "이미 존재하는 리소스",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 조회할 사원의 ID"
+														}
+													]
+												}
+											},
+											"status": "Conflict",
+											"code": 409,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "a7d5dac4-149a-46a4-be58-bc06ebfb4f92"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "ffcf3807-3bf0-4df1-9fda-3d2da1642517",
+											"name": "서버 오류",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 조회할 사원의 ID"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "36a54dc7-0001-410d-a596-b1a4c324acaa"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										}
+									]
+								},
+								{
+									"name": "오케스트로 사원 정보 수정",
+									"id": "2b07bbbb-63c5-4e0c-8a42-f48740a955be",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 1,\n  \"name\": \"김지헌\",\n  \"dept\": \"공공클라우드네이티브실\",\n  \"team\": \"이행관리팀\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/user/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"user",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) 수정할 사원의 ID"
+												}
+											]
+										},
+										"description": "사원의 정보를 수정합니다."
+									},
+									"response": [
+										{
+											"id": "acbdd0f4-011e-48e9-9cb0-a22dbc6956b5",
+											"name": "수정 성공",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": 1,\n  \"name\": \"김지헌\",\n  \"dept\": \"공공클라우드네이티브실\",\n  \"team\": \"이행관리팀\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 수정할 사원의 ID"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*",
+													"uuid": "9c075e62-94a7-4717-b731-b220af7637ff"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": 1,\n  \"name\": \"김지헌\",\n  \"dept\": \"공공클라우드네이티브실\",\n  \"team\": \"이행관리팀\"\n}"
+										},
+										{
+											"id": "5b4c8b40-01d9-4fda-9296-b7306bbebbd6",
+											"name": "잘못된 요청",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": 1,\n  \"name\": \"김지헌\",\n  \"dept\": \"공공클라우드네이티브실\",\n  \"team\": \"이행관리팀\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 수정할 사원의 ID"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "d2ae5f5c-dda0-48ae-bbe8-8b95cecc4357"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "e76499bf-3ff3-4bcd-9f3a-cb1e87469920",
+											"name": "권한 없음",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": 1,\n  \"name\": \"김지헌\",\n  \"dept\": \"공공클라우드네이티브실\",\n  \"team\": \"이행관리팀\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 수정할 사원의 ID"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "0e569f72-2cbc-4490-9a12-a29e43b9a64f"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "9b89516b-5aad-4bb0-b799-f64ff0eaa97c",
+											"name": "접근 금지",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": 1,\n  \"name\": \"김지헌\",\n  \"dept\": \"공공클라우드네이티브실\",\n  \"team\": \"이행관리팀\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 수정할 사원의 ID"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "ab600da9-7f8e-4d51-87cc-4064bd943f1e"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "e83d8424-63a9-4eb9-971c-94dc6d39a076",
+											"name": "리소스를 찾을 수 없음",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": 1,\n  \"name\": \"김지헌\",\n  \"dept\": \"공공클라우드네이티브실\",\n  \"team\": \"이행관리팀\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 수정할 사원의 ID"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "e33049a0-5ca8-49db-b9b8-a7be314d25f2"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "6d0f4be5-0313-4400-8118-82772b5ea1f4",
+											"name": "지원하지 않는 메서드",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": 1,\n  \"name\": \"김지헌\",\n  \"dept\": \"공공클라우드네이티브실\",\n  \"team\": \"이행관리팀\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 수정할 사원의 ID"
+														}
+													]
+												}
+											},
+											"status": "Method Not Allowed",
+											"code": 405,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "1cf5df67-515b-4b57-a35b-404e97df800a"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "5c44b5ea-82c7-4a57-87cd-b05021c8b2d9",
+											"name": "이미 존재하는 리소스",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": 1,\n  \"name\": \"김지헌\",\n  \"dept\": \"공공클라우드네이티브실\",\n  \"team\": \"이행관리팀\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 수정할 사원의 ID"
+														}
+													]
+												}
+											},
+											"status": "Conflict",
+											"code": 409,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "55125797-e473-4ccd-b4d9-7b984a9b429d"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "da42718b-209a-468d-adef-454ffe9155b5",
+											"name": "서버 오류",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": 1,\n  \"name\": \"김지헌\",\n  \"dept\": \"공공클라우드네이티브실\",\n  \"team\": \"이행관리팀\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 수정할 사원의 ID"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "2b6fecd0-0790-4671-b2ed-82485e73e39f"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										}
+									]
+								},
+								{
+									"name": "오케스트로 사원 삭제",
+									"id": "20ad641e-c9ae-41bf-8396-84c383239592",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/user/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"user",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) 삭제할 사원의 ID"
+												}
+											]
+										},
+										"description": "ID를 기준으로 사원을 삭제합니다."
+									},
+									"response": [
+										{
+											"id": "825a19a9-d432-4f0d-823d-d95e3dc3c2b6",
+											"name": "삭제 성공",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 삭제할 사원의 ID"
+														}
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain",
+													"uuid": "4604f55e-9b17-4d04-92e6-e0748ac77277"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"id": "3f707dab-874f-4b46-9ba4-a13926e755fa",
+											"name": "잘못된 요청",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 삭제할 사원의 ID"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "1d17f808-7893-4afe-8888-88c3b08bac7e"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "25f3c9f7-1eaa-48fa-863f-9603689af802",
+											"name": "권한 없음",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 삭제할 사원의 ID"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "f8a729b4-6398-42b4-b9ce-47d86c88bd33"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "6c46ebd0-42bd-4ca5-a850-50e07444b30a",
+											"name": "접근 금지",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 삭제할 사원의 ID"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "d5f3b491-fa17-4e1f-b1a2-7e6a05138ffc"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "6e2998fe-4e97-43cb-93b0-31d11c74c2dd",
+											"name": "리소스를 찾을 수 없음",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 삭제할 사원의 ID"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "bae41223-c7ad-4a87-b909-8c7560b84975"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "d045529e-608c-4ee6-bbad-aec8e84a48e1",
+											"name": "지원하지 않는 메서드",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 삭제할 사원의 ID"
+														}
+													]
+												}
+											},
+											"status": "Method Not Allowed",
+											"code": 405,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "f7546cfa-c608-44c7-9f2e-06b7ac564203"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "4e496882-f693-47db-9a5c-e2ece86564b8",
+											"name": "이미 존재하는 리소스",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 삭제할 사원의 ID"
+														}
+													]
+												}
+											},
+											"status": "Conflict",
+											"code": 409,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "07be995e-814c-4e71-acba-4a4cd665b745"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "cb2ebcc1-c51e-4bd5-ba76-e692c1439130",
+											"name": "서버 오류",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 삭제할 사원의 ID"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "3a051e77-d1d8-4c15-81fe-655b632981ed"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										}
+									]
+								}
+							],
+							"id": "3f00cc57-ea9a-4c37-a6b7-ce6a2e4143f5"
+						},
+						{
+							"name": "오케스트로 사원 생성",
+							"id": "fbce68c2-cff2-4e6c-b619-a6814c5c22a8",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": 1,\n  \"name\": \"김지헌\",\n  \"dept\": \"공공클라우드네이티브실\",\n  \"team\": \"이행관리팀\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user"
+									]
+								},
+								"description": "새로운 사원을 추가합니다."
+							},
+							"response": [
+								{
+									"id": "e7317b24-bdc3-4655-9d5d-6f164a10ed31",
+									"name": "생성 성공",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 1,\n  \"name\": \"김지헌\",\n  \"dept\": \"공공클라우드네이티브실\",\n  \"team\": \"이행관리팀\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/user",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"user"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*",
+											"uuid": "eeb3b2d5-3ec9-4045-bb43-b6f3833b8bea"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": 1,\n  \"name\": \"김지헌\",\n  \"dept\": \"공공클라우드네이티브실\",\n  \"team\": \"이행관리팀\"\n}"
+								},
+								{
+									"id": "bd4a8248-c931-454d-9f0d-b2762702b92d",
+									"name": "잘못된 요청",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 1,\n  \"name\": \"김지헌\",\n  \"dept\": \"공공클라우드네이티브실\",\n  \"team\": \"이행관리팀\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/user",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"user"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "792b945c-3409-4ee2-bad4-361e1192db7a"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "f08b8ace-8f87-4a31-b3d0-93778ff92d0e",
+									"name": "권한 없음",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 1,\n  \"name\": \"김지헌\",\n  \"dept\": \"공공클라우드네이티브실\",\n  \"team\": \"이행관리팀\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/user",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"user"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "523ba6e2-1275-4bdd-a4c3-47e6da83b5a8"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "a33afa49-ed08-48fd-be4e-3a5183fcd5ec",
+									"name": "접근 금지",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 1,\n  \"name\": \"김지헌\",\n  \"dept\": \"공공클라우드네이티브실\",\n  \"team\": \"이행관리팀\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/user",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"user"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "c5fa63cf-79d7-443a-a691-4aa49e856ffe"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "55487ecc-3c1a-46c7-9dba-9de0e843a336",
+									"name": "리소스를 찾을 수 없음",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 1,\n  \"name\": \"김지헌\",\n  \"dept\": \"공공클라우드네이티브실\",\n  \"team\": \"이행관리팀\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/user",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"user"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "e27284bd-310b-49ca-beec-498e718b14ca"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "b077b4f2-e80d-45af-9c2c-55344a5df69f",
+									"name": "지원하지 않는 메서드",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 1,\n  \"name\": \"김지헌\",\n  \"dept\": \"공공클라우드네이티브실\",\n  \"team\": \"이행관리팀\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/user",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"user"
+											]
+										}
+									},
+									"status": "Method Not Allowed",
+									"code": 405,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "ac8fa6d0-fee6-4060-80b1-0c05351e4119"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "ecde551e-2388-4903-9254-784e8bbc86db",
+									"name": "이미 존재하는 리소스",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 1,\n  \"name\": \"김지헌\",\n  \"dept\": \"공공클라우드네이티브실\",\n  \"team\": \"이행관리팀\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/user",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"user"
+											]
+										}
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "cf71e9df-dae7-40b9-807e-d578b16f53c3"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "3f2509c9-c711-4e4d-a4b6-cd16ff09e8df",
+									"name": "서버 오류",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 1,\n  \"name\": \"김지헌\",\n  \"dept\": \"공공클라우드네이티브실\",\n  \"team\": \"이행관리팀\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/user",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"user"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "7979776f-6d1f-47c0-84dc-21fb2917b703"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								}
+							]
+						}
+					],
+					"id": "fe83f8fe-1e0e-4a6a-81e3-b01487409a8b"
+				},
+				{
+					"name": "products",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "제품 정보 수정",
+									"id": "d12a3152-0661-4c0e-a627-1ff7a23a4b72",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 1,\n  \"name\": \"Contrabass\",\n  \"version\": \"v1\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) 수정할 제품의 ID"
+												}
+											]
+										},
+										"description": "제품 정보를 수정합니다."
+									},
+									"response": [
+										{
+											"id": "7bcad5ad-526a-4428-b563-6ad6bf766584",
+											"name": "수정 성공",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": 1,\n  \"name\": \"Contrabass\",\n  \"version\": \"v1\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 수정할 제품의 ID"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*",
+													"uuid": "c9864171-d550-49ea-9af0-3c0894b81d54"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": 1,\n  \"name\": \"Contrabass\",\n  \"version\": \"v1\"\n}"
+										},
+										{
+											"id": "5900a0fe-b2c7-4ab2-8ce6-c8ce74393e25",
+											"name": "잘못된 요청",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": 1,\n  \"name\": \"Contrabass\",\n  \"version\": \"v1\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 수정할 제품의 ID"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "8941ffcf-daf3-421a-bf04-e67b09ca2617"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "568950f5-383e-40c9-92bc-6c52f2ca8755",
+											"name": "권한 없음",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": 1,\n  \"name\": \"Contrabass\",\n  \"version\": \"v1\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 수정할 제품의 ID"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "78d2dd79-7010-46ee-8a07-2e535625592d"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "15cdfc29-9862-487b-a71c-6a120dd10e03",
+											"name": "접근 금지",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": 1,\n  \"name\": \"Contrabass\",\n  \"version\": \"v1\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 수정할 제품의 ID"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "28cfb64e-c1e0-4d18-9ee4-96196edd9410"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "1784cf50-1629-4bf8-981c-97ac62855b3d",
+											"name": "리소스를 찾을 수 없음",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": 1,\n  \"name\": \"Contrabass\",\n  \"version\": \"v1\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 수정할 제품의 ID"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "32f9611a-a86b-418c-b7fc-b6e1944bd905"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "89b3d915-e184-4fba-b19c-306508b92481",
+											"name": "지원하지 않는 메서드",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": 1,\n  \"name\": \"Contrabass\",\n  \"version\": \"v1\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 수정할 제품의 ID"
+														}
+													]
+												}
+											},
+											"status": "Method Not Allowed",
+											"code": 405,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "5675d833-fc07-4e67-aba4-d32d0aa4a35e"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "611d5217-5a05-482e-9d6e-ca23bc69f299",
+											"name": "이미 존재하는 리소스",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": 1,\n  \"name\": \"Contrabass\",\n  \"version\": \"v1\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 수정할 제품의 ID"
+														}
+													]
+												}
+											},
+											"status": "Conflict",
+											"code": 409,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "99bc93f5-0e1b-4329-85c9-330f3a66bfd2"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "6d00ad57-c5ba-492b-b270-6763d7c39838",
+											"name": "서버 오류",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": 1,\n  \"name\": \"Contrabass\",\n  \"version\": \"v1\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 수정할 제품의 ID"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "e599b7d6-cb22-4f9f-bd0d-083262fcfbc4"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										}
+									]
+								},
+								{
+									"name": "제품 삭제",
+									"id": "34b65067-b270-4059-b885-a3b3b15f1a0a",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) 삭제할 제품의 ID"
+												}
+											]
+										},
+										"description": "ID로 제품을 삭제합니다."
+									},
+									"response": [
+										{
+											"id": "998c5889-240f-41d6-82f9-f838dca18b07",
+											"name": "삭제 성공",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 삭제할 제품의 ID"
+														}
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain",
+													"uuid": "23ec14a4-2d93-4ff2-be54-6a3644fb1fec"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"id": "ca252c4f-7b75-4588-a493-c86ea7bb8c21",
+											"name": "잘못된 요청",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 삭제할 제품의 ID"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "2151d267-d4cc-4c44-a76f-a5669023762b"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "48aa4d90-9535-437f-9160-0cf2d554c9ad",
+											"name": "권한 없음",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 삭제할 제품의 ID"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "5afdae54-8b8e-4ca8-8553-d68aa4fb71fa"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "dea68a51-0cb5-4f4e-a84e-80c298d3aa84",
+											"name": "접근 금지",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 삭제할 제품의 ID"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "05329488-7e7f-4e26-a926-de6a98754676"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "eaaef71b-443c-4d66-91ff-663fbbe1cf68",
+											"name": "리소스를 찾을 수 없음",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 삭제할 제품의 ID"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "f4a0b746-981e-4639-9f9b-dfed8fe70fd1"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "4c70707d-c0f4-45da-a02f-77107e7ce406",
+											"name": "지원하지 않는 메서드",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 삭제할 제품의 ID"
+														}
+													]
+												}
+											},
+											"status": "Method Not Allowed",
+											"code": 405,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "b2c68031-f738-41c4-a06a-833b26af4122"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "16637cf6-b127-4996-990a-654cd0902931",
+											"name": "이미 존재하는 리소스",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 삭제할 제품의 ID"
+														}
+													]
+												}
+											},
+											"status": "Conflict",
+											"code": 409,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "f761397e-5c22-4e14-8d86-b4c801ada772"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										},
+										{
+											"id": "8b9a5bd8-2737-48ad-aac5-6793644c8ff2",
+											"name": "서버 오류",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/products/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"products",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) 삭제할 제품의 ID"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "b1b3fe3a-c89b-4230-8631-dabe6e9aa516"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+										}
+									]
+								}
+							],
+							"id": "e0fa7410-93f5-4033-b78c-603a6af05fb8"
+						},
+						{
+							"name": "제품 등록",
+							"id": "9381be0b-399f-4c46-b671-509ee26680df",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": 1,\n  \"name\": \"Contrabass\",\n  \"version\": \"v1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/products",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products"
+									]
+								},
+								"description": "새로운 제품을 등록합니다."
+							},
+							"response": [
+								{
+									"id": "528b389a-e718-475d-bd36-d1236c26a1aa",
+									"name": "등록 성공",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 1,\n  \"name\": \"Contrabass\",\n  \"version\": \"v1\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*",
+											"uuid": "be97d807-8862-40cb-bee7-9f55c038530f"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": 1,\n  \"name\": \"Contrabass\",\n  \"version\": \"v1\"\n}"
+								},
+								{
+									"id": "283b600d-be52-42a6-835d-1bac9c14a59d",
+									"name": "잘못된 요청",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 1,\n  \"name\": \"Contrabass\",\n  \"version\": \"v1\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "b4bec6e4-eb10-4ae3-88c0-2ba1747fdd6b"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "3396cf8b-de76-4a71-9068-77125b314ff7",
+									"name": "권한 없음",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 1,\n  \"name\": \"Contrabass\",\n  \"version\": \"v1\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "a8bd0d1d-76c8-4dcd-9e0d-de7d1d37ad9f"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "19a0234c-7a84-4aeb-996b-e8e31c5d8be8",
+									"name": "접근 금지",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 1,\n  \"name\": \"Contrabass\",\n  \"version\": \"v1\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "3475926d-4902-4d9a-842f-f877be896f2b"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "70b2c554-afb5-4476-884f-d9703358efde",
+									"name": "리소스를 찾을 수 없음",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 1,\n  \"name\": \"Contrabass\",\n  \"version\": \"v1\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "e90eb482-3ced-4023-9ba8-216aca598659"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "dbc4051a-e1b9-4ebf-ad27-506ffebb8fec",
+									"name": "지원하지 않는 메서드",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 1,\n  \"name\": \"Contrabass\",\n  \"version\": \"v1\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products"
+											]
+										}
+									},
+									"status": "Method Not Allowed",
+									"code": 405,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "02587216-7514-4759-9d42-56c79d27cc0f"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "fad0ee7a-fa3e-4c41-8039-9ecd7558cdb3",
+									"name": "이미 존재하는 리소스",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 1,\n  \"name\": \"Contrabass\",\n  \"version\": \"v1\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products"
+											]
+										}
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "28ce268b-bf27-456d-b557-27d4c6fbe961"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "41ec49f4-2993-4b9e-9858-b3095eb97537",
+									"name": "서버 오류",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 1,\n  \"name\": \"Contrabass\",\n  \"version\": \"v1\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "629970a7-750e-4b33-871a-096e8dc1145c"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								}
+							]
+						},
+						{
+							"name": "제품명으로 조회",
+							"id": "2dc095d6-195a-42eb-83b9-377088e212db",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/products/name/:name",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"name",
+										":name"
+									],
+									"variable": [
+										{
+											"key": "name",
+											"value": "contrabass",
+											"description": "(Required) 조회할 제품의 이름"
+										}
+									]
+								},
+								"description": "제품명을 기준으로 제품을 조회합니다."
+							},
+							"response": [
+								{
+									"id": "bd5e301b-e7fc-4de5-b33c-f89a29d59576",
+									"name": "조회 성공",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/name/:name",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												"name",
+												":name"
+											],
+											"variable": [
+												{
+													"key": "name",
+													"value": "contrabass",
+													"description": "(Required) 조회할 제품의 이름"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*",
+											"uuid": "63a6afcb-dae1-4199-93f4-716b2749a1bf"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": 1,\n    \"name\": \"Contrabass\",\n    \"version\": \"v1\"\n  },\n  {\n    \"id\": 1,\n    \"name\": \"Contrabass\",\n    \"version\": \"v1\"\n  }\n]"
+								},
+								{
+									"id": "bc4444fe-f8a5-4f57-a10f-724e0abf0d22",
+									"name": "잘못된 요청",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/name/:name",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												"name",
+												":name"
+											],
+											"variable": [
+												{
+													"key": "name",
+													"value": "contrabass",
+													"description": "(Required) 조회할 제품의 이름"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "a8d38b26-ac30-46ac-8bd1-d15789a7a839"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "5dbd1d49-48dd-4e18-87b3-67183470e713",
+									"name": "권한 없음",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/name/:name",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												"name",
+												":name"
+											],
+											"variable": [
+												{
+													"key": "name",
+													"value": "contrabass",
+													"description": "(Required) 조회할 제품의 이름"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "931c2c34-a6cd-446f-b9ff-7593c2567b46"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "339d35df-01bf-468c-9fca-8756fba114c9",
+									"name": "접근 금지",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/name/:name",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												"name",
+												":name"
+											],
+											"variable": [
+												{
+													"key": "name",
+													"value": "contrabass",
+													"description": "(Required) 조회할 제품의 이름"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "b318825c-89e3-469e-8dd6-4572763e920b"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "40f958d6-ce3d-4d8f-827c-e02f5665ebce",
+									"name": "리소스를 찾을 수 없음",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/name/:name",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												"name",
+												":name"
+											],
+											"variable": [
+												{
+													"key": "name",
+													"value": "contrabass",
+													"description": "(Required) 조회할 제품의 이름"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "de168300-991d-4299-ac25-ca5234aa6570"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "f02b66b8-52f8-4522-a0d6-a08787df1fd4",
+									"name": "지원하지 않는 메서드",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/name/:name",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												"name",
+												":name"
+											],
+											"variable": [
+												{
+													"key": "name",
+													"value": "contrabass",
+													"description": "(Required) 조회할 제품의 이름"
+												}
+											]
+										}
+									},
+									"status": "Method Not Allowed",
+									"code": 405,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "0a14e83d-3d5a-418b-a343-9e8752ab5861"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "21341ca3-c37f-47e4-90cb-60eee328ed05",
+									"name": "이미 존재하는 리소스",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/name/:name",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												"name",
+												":name"
+											],
+											"variable": [
+												{
+													"key": "name",
+													"value": "contrabass",
+													"description": "(Required) 조회할 제품의 이름"
+												}
+											]
+										}
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "18b588c4-9393-440f-8ede-12f49679e655"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "d0447487-5d48-4abd-bbe5-63d0b297825b",
+									"name": "서버 오류",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/name/:name",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												"name",
+												":name"
+											],
+											"variable": [
+												{
+													"key": "name",
+													"value": "contrabass",
+													"description": "(Required) 조회할 제품의 이름"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "a662eb77-e8e2-45e1-b500-9f45d9121804"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								}
+							]
+						},
+						{
+							"name": "제품 전체 조회",
+							"id": "62f21446-75e4-472f-80fc-66c67f818d6e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/products/list",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"list"
+									]
+								},
+								"description": "모든 제품을 조회합니다."
+							},
+							"response": [
+								{
+									"id": "e8cb1c03-e3d1-4719-817c-08a22a91446b",
+									"name": "조회 성공",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/list",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												"list"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*",
+											"uuid": "f71457de-bd09-451e-83a4-349a2cb1e63f"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": 1,\n    \"name\": \"Contrabass\",\n    \"version\": \"v1\"\n  },\n  {\n    \"id\": 1,\n    \"name\": \"Contrabass\",\n    \"version\": \"v1\"\n  }\n]"
+								},
+								{
+									"id": "27105d5b-3291-49be-af62-76c1e5c4d6a5",
+									"name": "잘못된 요청",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/list",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												"list"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "086e9592-3448-41f6-9ef6-d27ba503a1ed"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "10c070bd-3714-4d43-8201-4579acfd4811",
+									"name": "권한 없음",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/list",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												"list"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "1326611c-975a-45d0-83ae-7bdc38f2b03e"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "45384dd2-a218-47b9-96c1-22b945ab33a9",
+									"name": "접근 금지",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/list",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												"list"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "b16a9569-ed59-4f86-a901-7fd8ebe1f45b"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "89acd318-7ba1-4b8e-a168-edfa219503d3",
+									"name": "리소스를 찾을 수 없음",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/list",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												"list"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "220c2078-00c4-4b9e-bc8f-24b6be243b28"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "5113dd07-dde6-43a8-bab0-27c48153e0b9",
+									"name": "지원하지 않는 메서드",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/list",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												"list"
+											]
+										}
+									},
+									"status": "Method Not Allowed",
+									"code": 405,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "31268813-b1bd-476d-8034-09157163e8b2"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "8fde224a-eb15-4c43-b8a1-4547eb2e1671",
+									"name": "이미 존재하는 리소스",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/list",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												"list"
+											]
+										}
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "e0d20a7f-6e93-4840-889c-8dd0ffa2e9fe"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "78da878d-c270-456b-9690-10eb2b31e734",
+									"name": "서버 오류",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/list",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												"list"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "7cb0c7c7-b01d-45b6-b44f-d455a675e749"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								}
+							]
+						},
+						{
+							"name": "제품 조회",
+							"id": "4a726d81-1782-4c6d-8aa9-5307192c6f24",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/products/id/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"id",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "(Required) 조회할 제품의 ID"
+										}
+									]
+								},
+								"description": "ID로 제품을 조회합니다."
+							},
+							"response": [
+								{
+									"id": "6b1f9c62-858b-4708-bfff-19b279d77116",
+									"name": "조회 성공",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/id/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												"id",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) 조회할 제품의 ID"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*",
+											"uuid": "181f94ae-d6a6-4937-a122-45b5369fa411"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": 1,\n  \"name\": \"Contrabass\",\n  \"version\": \"v1\"\n}"
+								},
+								{
+									"id": "afe27c2f-468b-4ebf-8c82-bdc97d6caa58",
+									"name": "잘못된 요청",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/id/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												"id",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) 조회할 제품의 ID"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "1df0c9a0-90c9-44ab-973a-b56f836f139a"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "72cc798b-351f-413c-ac94-c5cd52b2aab0",
+									"name": "권한 없음",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/id/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												"id",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) 조회할 제품의 ID"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "b355c908-c93a-4f0c-a970-59c4db52b5a4"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "3c2bfab0-2f2d-439f-a6a5-c2d57fc2ace1",
+									"name": "접근 금지",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/id/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												"id",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) 조회할 제품의 ID"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "932d01e2-5fcf-4b27-ad97-43d0a119d2c6"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "1b91fa77-fc68-4a4f-8ea1-dc562d2b94af",
+									"name": "리소스를 찾을 수 없음",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/id/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												"id",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) 조회할 제품의 ID"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "4dd6c073-48ee-42b5-aded-6ae32a65d1ff"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "808fd996-0794-4c5a-81f6-8b51bef59fe7",
+									"name": "지원하지 않는 메서드",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/id/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												"id",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) 조회할 제품의 ID"
+												}
+											]
+										}
+									},
+									"status": "Method Not Allowed",
+									"code": 405,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "55de3fc4-b327-4f75-b52e-58c0cbdf817f"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "7a30b9f5-40fc-4087-a448-ff846bfb0858",
+									"name": "이미 존재하는 리소스",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/id/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												"id",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) 조회할 제품의 ID"
+												}
+											]
+										}
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "c4ff0c4b-59e6-4a49-9e08-07d71a73a78b"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								},
+								{
+									"id": "5495f5b8-3692-492f-a420-aa194d4bba71",
+									"name": "서버 오류",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/products/id/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"products",
+												"id",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) 조회할 제품의 ID"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"uuid": "616d88db-df85-4033-8139-76a37d79ac86"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+								}
+							]
+						}
+					],
+					"id": "c26294dc-947f-46d0-9f46-9ac145f78b97"
+				},
+				{
+					"name": "오케스트로 사원 팀별 조회",
+					"id": "c09f4ea0-e329-47f1-8371-1e37acfa07bc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/team/:team",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"team",
+								":team"
+							],
+							"variable": [
+								{
+									"key": "team",
+									"value": "이행관리팀",
+									"description": "(Required) 조회할 팀명"
+								}
+							]
+						},
+						"description": "팀을 기준으로 사원을 조회합니다."
+					},
+					"response": [
+						{
+							"id": "973b5515-ab26-4c47-b110-ba031bdc7550",
+							"name": "조회 성공",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/team/:team",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"team",
+										":team"
+									],
+									"variable": [
+										{
+											"key": "team",
+											"value": "이행관리팀",
+											"description": "(Required) 조회할 팀명"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*",
+									"uuid": "a27467d6-11a7-4b4f-ac8a-4ec9c839a478"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": 1,\n    \"name\": \"김지헌\",\n    \"dept\": \"공공클라우드네이티브실\",\n    \"team\": \"이행관리팀\"\n  },\n  {\n    \"id\": 1,\n    \"name\": \"김지헌\",\n    \"dept\": \"공공클라우드네이티브실\",\n    \"team\": \"이행관리팀\"\n  }\n]"
+						},
+						{
+							"id": "ffab42f3-a135-4903-837a-2b7a8b203e60",
+							"name": "잘못된 요청",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/team/:team",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"team",
+										":team"
+									],
+									"variable": [
+										{
+											"key": "team",
+											"value": "이행관리팀",
+											"description": "(Required) 조회할 팀명"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"uuid": "1470f9a4-4f32-4d87-a90a-9ad971611719"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+						},
+						{
+							"id": "1e5c64bc-3ead-4589-a761-0490107168d8",
+							"name": "권한 없음",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/team/:team",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"team",
+										":team"
+									],
+									"variable": [
+										{
+											"key": "team",
+											"value": "이행관리팀",
+											"description": "(Required) 조회할 팀명"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"uuid": "c2025855-1a72-4c0d-9572-64c647ff97f1"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+						},
+						{
+							"id": "e7f4a315-25c9-43bd-a02b-65f65864813a",
+							"name": "접근 금지",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/team/:team",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"team",
+										":team"
+									],
+									"variable": [
+										{
+											"key": "team",
+											"value": "이행관리팀",
+											"description": "(Required) 조회할 팀명"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"uuid": "802ef4b3-ecee-4007-b693-b8f6fb35185c"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+						},
+						{
+							"id": "d97b64db-92a3-4eee-90ae-0ce9795c22db",
+							"name": "리소스를 찾을 수 없음",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/team/:team",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"team",
+										":team"
+									],
+									"variable": [
+										{
+											"key": "team",
+											"value": "이행관리팀",
+											"description": "(Required) 조회할 팀명"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"uuid": "3d9d5c85-5166-4be8-9534-4b32f0cfa717"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+						},
+						{
+							"id": "f70e73fe-445f-44f4-8613-43810171114f",
+							"name": "지원하지 않는 메서드",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/team/:team",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"team",
+										":team"
+									],
+									"variable": [
+										{
+											"key": "team",
+											"value": "이행관리팀",
+											"description": "(Required) 조회할 팀명"
+										}
+									]
+								}
+							},
+							"status": "Method Not Allowed",
+							"code": 405,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"uuid": "ba132458-3ace-4c73-b1c5-9639c4a98ffc"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+						},
+						{
+							"id": "e3dd65a3-492a-407e-ac5b-a8db8858caff",
+							"name": "이미 존재하는 리소스",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/team/:team",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"team",
+										":team"
+									],
+									"variable": [
+										{
+											"key": "team",
+											"value": "이행관리팀",
+											"description": "(Required) 조회할 팀명"
+										}
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"uuid": "0216daa2-6547-4941-a8c3-13fc35c65d3d"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+						},
+						{
+							"id": "154fc739-8dc8-4572-adc4-b564e79e5738",
+							"name": "서버 오류",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/team/:team",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"team",
+										":team"
+									],
+									"variable": [
+										{
+											"key": "team",
+											"value": "이행관리팀",
+											"description": "(Required) 조회할 팀명"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"uuid": "4a6eb3a9-2cd2-4e31-8d86-ec9b87673846"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "오케스트로 사원 전체 조회",
+					"id": "f1a4fe0d-8620-4ed3-9084-0d79ae3e942a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/list",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"list"
+							]
+						},
+						"description": "사원 전체를 조회합니다."
+					},
+					"response": [
+						{
+							"id": "1979a323-1e0b-4a24-8aae-1f90fd2d4109",
+							"name": "조회 성공",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/list",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"list"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*",
+									"uuid": "f377f62d-9353-4f74-9ec0-5f52893b835e"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": 1,\n    \"name\": \"김지헌\",\n    \"dept\": \"공공클라우드네이티브실\",\n    \"team\": \"이행관리팀\"\n  },\n  {\n    \"id\": 1,\n    \"name\": \"김지헌\",\n    \"dept\": \"공공클라우드네이티브실\",\n    \"team\": \"이행관리팀\"\n  }\n]"
+						},
+						{
+							"id": "7b8fbcbe-9fd8-4817-9696-1c746434fdcd",
+							"name": "잘못된 요청",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/list",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"list"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"uuid": "c1af60a5-7563-49d4-9abc-32354bbf5515"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+						},
+						{
+							"id": "d12ee142-f9e9-46dc-8351-499185a8cb8e",
+							"name": "권한 없음",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/list",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"list"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"uuid": "814bb522-e9d8-4bc6-89ab-e79a6980ceb2"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+						},
+						{
+							"id": "56274d79-6e90-4c53-bd14-ad80b1446571",
+							"name": "접근 금지",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/list",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"list"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"uuid": "6546aee9-68e2-4cc4-94b6-f33995252f96"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+						},
+						{
+							"id": "2ccfa840-9cc2-4828-9025-73b709bb854a",
+							"name": "리소스를 찾을 수 없음",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/list",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"list"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"uuid": "a943d7ee-1607-4e83-8742-8252fca5df27"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+						},
+						{
+							"id": "bd2b5acc-74bc-4e4a-b957-19211c3bfb97",
+							"name": "지원하지 않는 메서드",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/list",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"list"
+									]
+								}
+							},
+							"status": "Method Not Allowed",
+							"code": 405,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"uuid": "106e7227-d1e9-439d-9366-b0cc00f10f12"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+						},
+						{
+							"id": "5ab1c2a6-2379-4625-863a-b82816a93daf",
+							"name": "이미 존재하는 리소스",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/list",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"list"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"uuid": "a6784c65-6a14-4e16-b0ff-3520416bf6b8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+						},
+						{
+							"id": "1d2718d4-809c-415f-bd50-05215d1fcb38",
+							"name": "서버 오류",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/list",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"list"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"uuid": "b6791ebc-aa39-4cef-b420-cfbb21627948"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "오케스트로 사원 부서별 조회",
+					"id": "619e44f4-af60-4508-b9ae-3a6491b9868b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/dept/:dept",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dept",
+								":dept"
+							],
+							"variable": [
+								{
+									"key": "dept",
+									"value": "공공클라우드네이티브실",
+									"description": "(Required) 조회할 부서명"
+								}
+							]
+						},
+						"description": "부서를 기준으로 사원을 조회합니다."
+					},
+					"response": [
+						{
+							"id": "e24ef95c-49a0-4684-882a-35b89be4ec1a",
+							"name": "조회 성공",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/dept/:dept",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"dept",
+										":dept"
+									],
+									"variable": [
+										{
+											"key": "dept",
+											"value": "공공클라우드네이티브실",
+											"description": "(Required) 조회할 부서명"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*",
+									"uuid": "a806f0c9-a8f4-46af-8fee-b46eecd3c114"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": 1,\n    \"name\": \"김지헌\",\n    \"dept\": \"공공클라우드네이티브실\",\n    \"team\": \"이행관리팀\"\n  },\n  {\n    \"id\": 1,\n    \"name\": \"김지헌\",\n    \"dept\": \"공공클라우드네이티브실\",\n    \"team\": \"이행관리팀\"\n  }\n]"
+						},
+						{
+							"id": "7acdeb02-e5c4-4416-a445-6bbf7f31bf78",
+							"name": "잘못된 요청",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/dept/:dept",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"dept",
+										":dept"
+									],
+									"variable": [
+										{
+											"key": "dept",
+											"value": "공공클라우드네이티브실",
+											"description": "(Required) 조회할 부서명"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"uuid": "ec577088-afcc-42e9-af2f-42d99c0a53c4"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+						},
+						{
+							"id": "de2fc4ad-5941-495a-ad38-9dcfa74582c6",
+							"name": "권한 없음",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/dept/:dept",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"dept",
+										":dept"
+									],
+									"variable": [
+										{
+											"key": "dept",
+											"value": "공공클라우드네이티브실",
+											"description": "(Required) 조회할 부서명"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"uuid": "e723b89c-193a-4d1a-985d-c48a8cca4d03"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+						},
+						{
+							"id": "2e89acd1-887c-4c95-9261-1aac4893b5c6",
+							"name": "접근 금지",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/dept/:dept",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"dept",
+										":dept"
+									],
+									"variable": [
+										{
+											"key": "dept",
+											"value": "공공클라우드네이티브실",
+											"description": "(Required) 조회할 부서명"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"uuid": "f0af453f-446b-468a-af31-32d1cf57022a"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+						},
+						{
+							"id": "c761a2f4-6ded-4c90-abc0-e4fc9af2e389",
+							"name": "리소스를 찾을 수 없음",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/dept/:dept",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"dept",
+										":dept"
+									],
+									"variable": [
+										{
+											"key": "dept",
+											"value": "공공클라우드네이티브실",
+											"description": "(Required) 조회할 부서명"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"uuid": "d1f878d9-b00f-48da-ae90-45a0be6fdd84"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+						},
+						{
+							"id": "6137c855-996f-431a-9b83-44c22a4bd5cd",
+							"name": "지원하지 않는 메서드",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/dept/:dept",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"dept",
+										":dept"
+									],
+									"variable": [
+										{
+											"key": "dept",
+											"value": "공공클라우드네이티브실",
+											"description": "(Required) 조회할 부서명"
+										}
+									]
+								}
+							},
+							"status": "Method Not Allowed",
+							"code": 405,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"uuid": "0ece0332-b926-48d5-9454-78a8e06a2315"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+						},
+						{
+							"id": "4d225586-f369-40c9-8352-e25778aecd2d",
+							"name": "이미 존재하는 리소스",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/dept/:dept",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"dept",
+										":dept"
+									],
+									"variable": [
+										{
+											"key": "dept",
+											"value": "공공클라우드네이티브실",
+											"description": "(Required) 조회할 부서명"
+										}
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"uuid": "c4b7c926-057a-47e6-834c-973ac5d9ab94"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+						},
+						{
+							"id": "19d2b023-13f3-45d0-ae50-150a62a8aa0b",
+							"name": "서버 오류",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/dept/:dept",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"dept",
+										":dept"
+									],
+									"variable": [
+										{
+											"key": "dept",
+											"value": "공공클라우드네이티브실",
+											"description": "(Required) 조회할 부서명"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"uuid": "16e11f65-6172-4440-9e19-b6e5df6e877e"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"해당 사용자를 찾을 수 없습니다.\"\n}"
+						}
+					]
+				}
+			],
+			"id": "20518eee-edda-40a9-86af-a6ab8059a3c9"
+		}
+	],
+	"variable": [
+		{
+			"id": "6a5811d5-aa3d-46e0-b1b0-f63c4c89c0fa",
+			"key": "baseUrl",
+			"value": "http://localhost:8081",
+			"type": "string"
+		}
+	]
+}
