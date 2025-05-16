@@ -1,1 +1,1466 @@
-{"openapi":"3.1.0","info":{"title":"Okestro API","description":"Okestro API 테스트","version":"1.0.0"},"servers":[{"url":"http://localhost:8081","description":"Generated server url"}],"tags":[{"name":"Product","description":"Okestro 제품 관련 API"},{"name":"User","description":"Okestro 사원 관련 API"}],"paths":{"/api/v1/user/{id}":{"get":{"tags":["User"],"summary":"오케스트로 사원 조회","description":"ID를 기준으로 사원을 조회합니다.","operationId":"getUserById","parameters":[{"name":"id","in":"path","description":"조회할 사원의 ID","required":true,"schema":{"type":"integer","format":"int32"},"example":1}],"responses":{"200":{"description":"조회 성공","content":{"*/*":{"schema":{"$ref":"#/components/schemas/User"}}}},"404":{"description":"리소스를 찾을 수 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"400":{"description":"잘못된 요청","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"500":{"description":"서버 오류","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"401":{"description":"권한 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"403":{"description":"접근 금지","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"409":{"description":"이미 존재하는 리소스","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"405":{"description":"지원하지 않는 메서드","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}},"put":{"tags":["User"],"summary":"오케스트로 사원 정보 수정","description":"사원의 정보를 수정합니다.","operationId":"updateUser","parameters":[{"name":"id","in":"path","description":"수정할 사원의 ID","required":true,"schema":{"type":"integer","format":"int32"},"example":1}],"requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/User"}}},"required":true},"responses":{"200":{"description":"수정 성공","content":{"*/*":{"schema":{"$ref":"#/components/schemas/User"}}}},"400":{"description":"잘못된 요청","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"404":{"description":"리소스를 찾을 수 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"409":{"description":"이미 존재하는 리소스","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"500":{"description":"서버 오류","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"401":{"description":"권한 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"403":{"description":"접근 금지","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"405":{"description":"지원하지 않는 메서드","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}},"delete":{"tags":["User"],"summary":"오케스트로 사원 삭제","description":"ID를 기준으로 사원을 삭제합니다.","operationId":"deleteUser","parameters":[{"name":"id","in":"path","description":"삭제할 사원의 ID","required":true,"schema":{"type":"integer","format":"int32"},"example":1}],"responses":{"204":{"description":"삭제 성공"},"404":{"description":"리소스를 찾을 수 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"400":{"description":"잘못된 요청","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"500":{"description":"서버 오류","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"401":{"description":"권한 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"403":{"description":"접근 금지","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"409":{"description":"이미 존재하는 리소스","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"405":{"description":"지원하지 않는 메서드","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}},"/api/v1/products/{id}":{"put":{"tags":["Product"],"summary":"제품 정보 수정","description":"제품 정보를 수정합니다.","operationId":"updateProduct","parameters":[{"name":"id","in":"path","description":"수정할 제품의 ID","required":true,"schema":{"type":"integer","format":"int32"},"example":1}],"requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/Product"}}},"required":true},"responses":{"200":{"description":"수정 성공","content":{"*/*":{"schema":{"$ref":"#/components/schemas/Product"}}}},"400":{"description":"잘못된 요청","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"404":{"description":"리소스를 찾을 수 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"409":{"description":"이미 존재하는 리소스","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"500":{"description":"서버 오류","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"401":{"description":"권한 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"403":{"description":"접근 금지","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"405":{"description":"지원하지 않는 메서드","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}},"delete":{"tags":["Product"],"summary":"제품 삭제","description":"ID로 제품을 삭제합니다.","operationId":"deleteProduct","parameters":[{"name":"id","in":"path","description":"삭제할 제품의 ID","required":true,"schema":{"type":"integer","format":"int32"},"example":1}],"responses":{"204":{"description":"삭제 성공"},"404":{"description":"리소스를 찾을 수 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"400":{"description":"잘못된 요청","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"500":{"description":"서버 오류","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"401":{"description":"권한 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"403":{"description":"접근 금지","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"409":{"description":"이미 존재하는 리소스","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"405":{"description":"지원하지 않는 메서드","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}},"/api/v1/user":{"post":{"tags":["User"],"summary":"오케스트로 사원 생성","description":"새로운 사원을 추가합니다.","operationId":"createUser","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/User"}}},"required":true},"responses":{"201":{"description":"생성 성공","content":{"*/*":{"schema":{"$ref":"#/components/schemas/User"}}}},"400":{"description":"잘못된 요청","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"409":{"description":"이미 존재하는 리소스","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"500":{"description":"서버 오류","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"404":{"description":"리소스를 찾을 수 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"401":{"description":"권한 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"403":{"description":"접근 금지","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"405":{"description":"지원하지 않는 메서드","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}},"/api/v1/products":{"post":{"tags":["Product"],"summary":"제품 등록","description":"새로운 제품을 등록합니다.","operationId":"createProduct","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/Product"}}},"required":true},"responses":{"201":{"description":"등록 성공","content":{"*/*":{"schema":{"$ref":"#/components/schemas/Product"}}}},"400":{"description":"잘못된 요청","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"409":{"description":"이미 존재하는 리소스","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"500":{"description":"서버 오류","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"404":{"description":"리소스를 찾을 수 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"401":{"description":"권한 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"403":{"description":"접근 금지","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"405":{"description":"지원하지 않는 메서드","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}},"/api/v1/team/{team}":{"get":{"tags":["User"],"summary":"오케스트로 사원 팀별 조회","description":"팀을 기준으로 사원을 조회합니다.","operationId":"getUserByTeam","parameters":[{"name":"team","in":"path","description":"조회할 팀명","required":true,"schema":{"type":"string"},"example":"이행관리팀"}],"responses":{"200":{"description":"조회 성공","content":{"*/*":{"schema":{"type":"array","items":{"$ref":"#/components/schemas/User"}}}}},"404":{"description":"리소스를 찾을 수 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"400":{"description":"잘못된 요청","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"500":{"description":"서버 오류","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"401":{"description":"권한 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"403":{"description":"접근 금지","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"409":{"description":"이미 존재하는 리소스","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"405":{"description":"지원하지 않는 메서드","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}},"/api/v1/products/name/{name}":{"get":{"tags":["Product"],"summary":"제품명으로 조회","description":"제품명을 기준으로 제품을 조회합니다.","operationId":"getProductByName","parameters":[{"name":"name","in":"path","description":"조회할 제품의 이름","required":true,"schema":{"type":"string"},"example":"contrabass"}],"responses":{"200":{"description":"조회 성공","content":{"*/*":{"schema":{"type":"array","items":{"$ref":"#/components/schemas/Product"}}}}},"404":{"description":"리소스를 찾을 수 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"400":{"description":"잘못된 요청","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"500":{"description":"서버 오류","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"401":{"description":"권한 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"403":{"description":"접근 금지","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"409":{"description":"이미 존재하는 리소스","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"405":{"description":"지원하지 않는 메서드","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}},"/api/v1/products/list":{"get":{"tags":["Product"],"summary":"제품 전체 조회","description":"모든 제품을 조회합니다.","operationId":"getProductList","responses":{"200":{"description":"조회 성공","content":{"*/*":{"schema":{"type":"array","items":{"$ref":"#/components/schemas/Product"}}}}},"404":{"description":"리소스를 찾을 수 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"500":{"description":"서버 오류","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"400":{"description":"잘못된 요청","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"401":{"description":"권한 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"403":{"description":"접근 금지","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"409":{"description":"이미 존재하는 리소스","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"405":{"description":"지원하지 않는 메서드","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}},"/api/v1/products/id/{id}":{"get":{"tags":["Product"],"summary":"제품 조회","description":"ID로 제품을 조회합니다.","operationId":"getProductById","parameters":[{"name":"id","in":"path","description":"조회할 제품의 ID","required":true,"schema":{"type":"integer","format":"int32"},"example":1}],"responses":{"200":{"description":"조회 성공","content":{"*/*":{"schema":{"$ref":"#/components/schemas/Product"}}}},"404":{"description":"리소스를 찾을 수 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"400":{"description":"잘못된 요청","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"500":{"description":"서버 오류","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"401":{"description":"권한 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"403":{"description":"접근 금지","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"409":{"description":"이미 존재하는 리소스","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"405":{"description":"지원하지 않는 메서드","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}},"/api/v1/list":{"get":{"tags":["User"],"summary":"오케스트로 사원 전체 조회","description":"사원 전체를 조회합니다.","operationId":"getUserList","responses":{"200":{"description":"조회 성공","content":{"*/*":{"schema":{"type":"array","items":{"$ref":"#/components/schemas/User"}}}}},"404":{"description":"리소스를 찾을 수 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"500":{"description":"서버 오류","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"400":{"description":"잘못된 요청","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"401":{"description":"권한 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"403":{"description":"접근 금지","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"409":{"description":"이미 존재하는 리소스","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"405":{"description":"지원하지 않는 메서드","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}},"/api/v1/dept/{dept}":{"get":{"tags":["User"],"summary":"오케스트로 사원 부서별 조회","description":"부서를 기준으로 사원을 조회합니다.","operationId":"getUserByDept","parameters":[{"name":"dept","in":"path","description":"조회할 부서명","required":true,"schema":{"type":"string"},"example":"공공클라우드네이티브실"}],"responses":{"200":{"description":"조회 성공","content":{"*/*":{"schema":{"type":"array","items":{"$ref":"#/components/schemas/User"}}}}},"404":{"description":"리소스를 찾을 수 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"400":{"description":"잘못된 요청","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"500":{"description":"서버 오류","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"401":{"description":"권한 없음","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"403":{"description":"접근 금지","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"409":{"description":"이미 존재하는 리소스","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"405":{"description":"지원하지 않는 메서드","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}}},"components":{"schemas":{"User":{"type":"object","description":"Okestro 유저 정보","example":{"id":1,"name":"김지헌","dept":"공공클라우드네이티브실","team":"이행관리팀"},"properties":{"id":{"type":"integer","format":"int64","description":"사원 고유 번호","example":1},"name":{"type":"string","format":"String","description":"사원 이름","example":"김지헌"},"dept":{"type":"string","format":"String","description":"사원 소속 부서","example":"공공클라우드네이티브실"},"team":{"type":"string","format":"String","description":"사원 소속 팀","example":"이행관리팀"}}},"Product":{"type":"object","description":"Okestro 제품 정보","example":{"id":1,"name":"Contrabass","version":"v1"},"properties":{"id":{"type":"integer","format":"int64","description":"제품 고유 번호","example":1},"name":{"type":"string","format":"String","description":"제품명","example":"Contrabass"},"version":{"type":"string","format":"String","description":"제품 버전","example":"v1"}}},"ErrorResponse":{"description":"API 에러 응답","properties":{"code":{"type":"string","description":"API 에러 코드","enum":["USER_NOT_FOUND","INVALID_REQUEST","INTERNAL_ERROR","UNAUTHORIZED","FORBIDDEN","ALREADY_EXISTS","MISSING_PARAMETER","METHOD_NOT_ALLOWED","INVALID_FORMAT"],"example":"USER_NOT_FOUND"},"message":{"type":"string","description":"에러 메시지","example":"해당 사용자를 찾을 수 없습니다."}}}}}}
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Okestro API",
+    "description": "Okestro API 테스트",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8081",
+      "description": "Generated server url"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Product",
+      "description": "Okestro 제품 관련 API"
+    },
+    {
+      "name": "User",
+      "description": "Okestro 사원 관련 API"
+    }
+  ],
+  "paths": {
+    "/api/v1/user/{id}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "오케스트로 사원 조회",
+        "description": "ID를 기준으로 사원을 조회합니다.",
+        "operationId": "getUserById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "조회할 사원의 ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "조회 성공",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "리소스를 찾을 수 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "잘못된 요청",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "서버 오류",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "권한 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "접근 금지",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "이미 존재하는 리소스",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "지원하지 않는 메서드",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "summary": "오케스트로 사원 정보 수정",
+        "description": "사원의 정보를 수정합니다.",
+        "operationId": "updateUser",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "수정할 사원의 ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 1
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "수정 성공",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "잘못된 요청",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "리소스를 찾을 수 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "이미 존재하는 리소스",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "서버 오류",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "권한 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "접근 금지",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "지원하지 않는 메서드",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "summary": "오케스트로 사원 삭제",
+        "description": "ID를 기준으로 사원을 삭제합니다.",
+        "operationId": "deleteUser",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "삭제할 사원의 ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 1
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "삭제 성공"
+          },
+          "404": {
+            "description": "리소스를 찾을 수 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "잘못된 요청",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "서버 오류",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "권한 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "접근 금지",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "이미 존재하는 리소스",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "지원하지 않는 메서드",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/products/{id}": {
+      "put": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "제품 정보 수정",
+        "description": "제품 정보를 수정합니다.",
+        "operationId": "updateProduct",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "수정할 제품의 ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 1
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "수정 성공",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "잘못된 요청",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "리소스를 찾을 수 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "이미 존재하는 리소스",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "서버 오류",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "권한 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "접근 금지",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "지원하지 않는 메서드",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "제품 삭제",
+        "description": "ID로 제품을 삭제합니다.",
+        "operationId": "deleteProduct",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "삭제할 제품의 ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 1
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "삭제 성공"
+          },
+          "404": {
+            "description": "리소스를 찾을 수 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "잘못된 요청",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "서버 오류",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "권한 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "접근 금지",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "이미 존재하는 리소스",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "지원하지 않는 메서드",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "오케스트로 사원 생성",
+        "description": "새로운 사원을 추가합니다.",
+        "operationId": "createUser",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "생성 성공",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "잘못된 요청",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "이미 존재하는 리소스",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "서버 오류",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "리소스를 찾을 수 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "권한 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "접근 금지",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "지원하지 않는 메서드",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/products": {
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "제품 등록",
+        "description": "새로운 제품을 등록합니다.",
+        "operationId": "createProduct",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "등록 성공",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "잘못된 요청",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "이미 존재하는 리소스",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "서버 오류",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "리소스를 찾을 수 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "권한 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "접근 금지",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "지원하지 않는 메서드",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/team/{team}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "오케스트로 사원 팀별 조회",
+        "description": "팀을 기준으로 사원을 조회합니다.",
+        "operationId": "getUserByTeam",
+        "parameters": [
+          {
+            "name": "team",
+            "in": "path",
+            "description": "조회할 팀명",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "이행관리팀"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "조회 성공",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "리소스를 찾을 수 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "잘못된 요청",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "서버 오류",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "권한 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "접근 금지",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "이미 존재하는 리소스",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "지원하지 않는 메서드",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/products/name/{name}": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "제품명으로 조회",
+        "description": "제품명을 기준으로 제품을 조회합니다.",
+        "operationId": "getProductByName",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "조회할 제품의 이름",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "contrabass"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "조회 성공",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Product"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "리소스를 찾을 수 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "잘못된 요청",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "서버 오류",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "권한 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "접근 금지",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "이미 존재하는 리소스",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "지원하지 않는 메서드",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/products/list": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "제품 전체 조회",
+        "description": "모든 제품을 조회합니다.",
+        "operationId": "getProductList",
+        "responses": {
+          "200": {
+            "description": "조회 성공",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Product"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "리소스를 찾을 수 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "서버 오류",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "잘못된 요청",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "권한 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "접근 금지",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "이미 존재하는 리소스",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "지원하지 않는 메서드",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/products/id/{id}": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "제품 조회",
+        "description": "ID로 제품을 조회합니다.",
+        "operationId": "getProductById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "조회할 제품의 ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "조회 성공",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "리소스를 찾을 수 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "잘못된 요청",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "서버 오류",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "권한 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "접근 금지",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "이미 존재하는 리소스",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "지원하지 않는 메서드",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/list": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "오케스트로 사원 전체 조회",
+        "description": "사원 전체를 조회합니다.",
+        "operationId": "getUserList",
+        "responses": {
+          "200": {
+            "description": "조회 성공",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "리소스를 찾을 수 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "서버 오류",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "잘못된 요청",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "권한 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "접근 금지",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "이미 존재하는 리소스",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "지원하지 않는 메서드",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dept/{dept}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "오케스트로 사원 부서별 조회",
+        "description": "부서를 기준으로 사원을 조회합니다.",
+        "operationId": "getUserByDept",
+        "parameters": [
+          {
+            "name": "dept",
+            "in": "path",
+            "description": "조회할 부서명",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "공공클라우드네이티브실"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "조회 성공",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "리소스를 찾을 수 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "잘못된 요청",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "서버 오류",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "권한 없음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "접근 금지",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "이미 존재하는 리소스",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "지원하지 않는 메서드",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "description": "Okestro 유저 정보",
+        "example": {
+          "id": 1,
+          "name": "김지헌",
+          "dept": "공공클라우드네이티브실",
+          "team": "이행관리팀"
+        },
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "사원 고유 번호",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "format": "String",
+            "description": "사원 이름",
+            "example": "김지헌"
+          },
+          "dept": {
+            "type": "string",
+            "format": "String",
+            "description": "사원 소속 부서",
+            "example": "공공클라우드네이티브실"
+          },
+          "team": {
+            "type": "string",
+            "format": "String",
+            "description": "사원 소속 팀",
+            "example": "이행관리팀"
+          }
+        }
+      },
+      "Product": {
+        "type": "object",
+        "description": "Okestro 제품 정보",
+        "example": {
+          "id": 1,
+          "name": "Contrabass",
+          "version": "v1"
+        },
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "제품 고유 번호",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "format": "String",
+            "description": "제품명",
+            "example": "Contrabass"
+          },
+          "version": {
+            "type": "string",
+            "format": "String",
+            "description": "제품 버전",
+            "example": "v1"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "description": "API 에러 응답",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "API 에러 코드",
+            "enum": [
+              "USER_NOT_FOUND",
+              "INVALID_REQUEST",
+              "INTERNAL_ERROR",
+              "UNAUTHORIZED",
+              "FORBIDDEN",
+              "ALREADY_EXISTS",
+              "MISSING_PARAMETER",
+              "METHOD_NOT_ALLOWED",
+              "INVALID_FORMAT"
+            ],
+            "example": "USER_NOT_FOUND"
+          },
+          "message": {
+            "type": "string",
+            "description": "에러 메시지",
+            "example": "해당 사용자를 찾을 수 없습니다."
+          }
+        }
+      }
+    }
+  }
+}
