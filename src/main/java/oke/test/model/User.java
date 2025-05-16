@@ -13,9 +13,8 @@ import lombok.Getter;
                         "team": "이행관리팀"
                     }
                 """
-        )
+)
 @Builder
-@Getter
 public record User(
 
         @Schema(description = "사원 고유 번호", example = "1", format = "int64")

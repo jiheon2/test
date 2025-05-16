@@ -14,15 +14,11 @@ import lombok.Getter;
                 """
 )
 @Builder
-@Getter
 public record Product(
-
         @Schema(description = "제품 고유 번호", example = "1", format = "int64")
         int id,
-
         @Schema(description = "제품명", example = "Contrabass", format = "String")
         String name,
-
         @Schema(description = "제품 버전", example = "v1", format = "String")
         String version
 ) {
