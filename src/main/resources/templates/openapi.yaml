@@ -1,0 +1,284 @@
+openapi: 3.0.4 # OAS 버전
+
+info: # OAS 기본 정보
+  title: Okestro API # 제목
+  description: 오케스트로 API # 설명
+  version: 1.0.0 # 버전
+
+servers: # 서버 정보
+  - url: http://34.64.212.207:8080/api/v1 # 서버 URL
+    description: GCP 서버 # 서버 설명
+
+tags: # 태그 정보
+  - name: okestro # Okestro 태그
+    description: 오케스트로 사원 API # 태그 설명
+  - name: oke-cloud # Okestro Cloud 태그
+    description: 오케스트로 클라우드 사원 API # 태그 설명
+
+paths: # API URL
+  /okestro/user: # http://34.64.212.207:8080/api/v1/okestro/user
+    get: # GET http://34.64.212.207:8080/api/v1/okestro/user
+      tags: # 분류할 태그 정보
+       - okestro
+      summary: 오케스트로 전체 사원 조회
+      description: 오케스트로의 모든 사원을 리스트 형태로 조회합니다.
+      operationId: getOkestroUsers # CodeGen 사용 시 생성되는 API 클래스 명
+      responses: # 응답 코드
+        '200':
+          description: 오케스트로 사원 리스트 조회 성공
+          content: # 응답 시 반환되는 정보
+            application/json: # json 형태로 반환
+              schema: # 참조할 스키마
+                type: array
+                items:
+                  $ref: '#/components/schemas/OkestroUser' # 참조 경로
+        '400':
+          description: 잘못된 요청
+        '404':
+          description: 정보가 없습니다.
+        '500':
+          description: 서버 에러
+        default:
+          description: 알 수 없는 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security: # 인증인가 정보
+        - okestroAuth: # 인증인가 정보 이름
+          - read:okestro # 읽기 권한
+          - write:okestro # 쓰기 권한
+    
+    post: # POST http://34.64.212.207:8080/api/v1/okestro/user
+      tags:
+       - okestro
+      summary: 오케스트로 사원 추가
+      description: 오케스트로에 사원을 추가합니다.
+      operationId : insertOkestroUsers
+      requestBody:
+        description: 추가할 오케스트로 사원 정보
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OkestroUser'
+        required: true
+      responses:
+        '200':
+          description: 오케스트로 사원 추가 성공
+        '400':
+          description: 잘못된 요청
+        '404':
+          description: 정보가 없습니다.
+        '500':
+          description: 서버 에러
+        default:
+          description: 알 수 없는 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    
+    put:
+      tags:
+      - okestro
+      summary: 오케스트로 사원 정보 수정
+      description: 오케스트로 사원 1명의 정보를 수정합니다.
+      operationId: updateOkestroUsers
+      requestBody:
+        description: 수정할 오케스트로 사원 정보
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OkestroUser'
+        required: true
+      responses:
+        '200':
+          description: 오케스트로 사원 정보 수정 성공
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OkestroUser'
+        '400':
+          description: 잘못된 요청
+        '404':
+          description: 정보가 없습니다.
+        '500':
+          description: 서버 에러
+        default:
+          description: 알 수 없는 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  
+  /okestro/user/{userId}: # http://34.64.212.207:8080/api/v1/okestro/user/{userId}
+    get:
+      tags:
+       - okestro
+      summary: 오케스트로 사원 상세 조회
+      description: 오케스트로 사원 1명의 정보를 조회합니다.
+      operationId: getOkestroUserInfo
+      parameters: # url의 파라미터 정보
+        - name: userId # 파라미터 이름
+          in: path # 파라미터 유형
+          description: 오케스트로 사원 ID
+          required: true # 필수 여부
+          schema: # 파라미터 스키마 정보
+            type: integer # 파라미터 타입
+            format: int64 # 파라미터 형식
+      responses:
+        '200':
+          description: 오케스트로 사원 정보 성공
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OkestroUser'
+        '400':
+          description: 잘못된 ID
+        '404':
+          description: 존재하지 않는 ID
+        default:
+          description: 알 수 없는 에러
+          content:
+            application/json:
+              schema:
+               $ref: "#/components/schemas/ErrorResponse"
+    
+    delete:
+      tags:
+      - okestro
+      summary: 오케스트로 사원 정보 삭제
+      description: 오케스트로 사원 1명의 정보를 삭제합니다.
+      operationId: deleteOkestroUserInfo
+      parameters:
+        - name: userId
+          in: path
+          description: 삭제할 오케스트로 사원 ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+          example: 3
+      responses:
+        '200':
+          description: 오케스트로 사원 정보 삭제 성공
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OkestroUser'
+        '400':
+          description: 잘못된 요청
+        '404':
+          description: 정보가 없습니다.
+        '500':
+          description: 서버 에러
+        default:
+          description: 알 수 없는 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      
+    
+          
+  /oke-cloud/member:
+    get:
+      tags:
+       - oke-cloud
+      summary: 오케스트로 클라우드 전체 사원 조회
+      description: 오케스트로 클라우드의 모든 사원을 리스트 형태로 조회합니다.
+      operationId: getOkeCloudUsers
+      responses:
+        '200':
+          description: 오케스트로 클라우드 사원 리스트 조회 성공
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OkeCloudUser'
+        '400':
+          description: 잘못된 요청
+        '404':
+          description: 정보가 없습니다.
+        '500':
+          description: 서버 에러
+        default:
+          description: 알 수 없는 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components: # 사용하는 요소 정의
+  schemas: # 스키마
+    OkestroUser: # OkestroUser이라는 스키마
+      type: object # 오브젝트 타입
+      required: # 필수 보유 값
+        - id
+      properties: # OkestroUser 객체의 속성 정의
+        id:
+          type: integer
+          format: int64
+          description: 유니크한 사원의 식별자
+          example: 4
+        name:
+          type: string
+          description: 사원의 이름
+          example: 김지헌
+        email:
+          type: string
+          format: email
+          description: 사원의 이메일 주소
+          example: okejhk@okestro.com
+        created_at:
+          type: string
+          format: date-time
+          description: 사원 생성 시간
+          
+    OkeCloudUser:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: 유니크한 사원의 식별자
+          example: 4
+        name:
+          type: string
+          description: 사원의 이름
+          example: 홍길동
+        email:
+          type: string
+          format: email
+          description: 사원의 이메일 주소
+          example: okehgd@okecloud.com
+        created_at:
+          type: string
+          format: date-time
+          description: 사원 생성 시간
+
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: 에러 코드
+        message:
+          type: string
+          description: 에러 메세지
+      required:
+        - code
+        - message
+
+  securitySchemes: # 보안 스키마
+    okestroAuth: # 이름
+      type: oauth2 # 유형
+      flows:
+        implicit:
+          authorizationUrl: https://34.64.212.207:8080/oauth/authorize
+          scopes:
+            "write:okestro": 오케스트로 사원 변경 권한
+            "read:okestro": 오케스트로 사원 조회 권한
