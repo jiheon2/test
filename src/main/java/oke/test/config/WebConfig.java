@@ -11,6 +11,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins("http://localhost:8080")
                 .allowedOrigins("https://okestro1.portal.swaggerhub.com/")
+                .allowedOrigins("http://localhost:3001")
                 .allowedMethods("*");
     }
 }
